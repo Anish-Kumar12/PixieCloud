@@ -12,7 +12,7 @@ export default clerkMiddleware(async (auth, req) => {
   if (userId) {
     // Redirect authenticated users trying to access sign-in or sign-up pages
     if (isPublicRoute(pathname)) {
-      return NextResponse.redirect(new URL("/home", req.url));
+      return NextResponse.redirect(new URL("/start", req.url));
     }
   } else {
     // Redirect unauthenticated users trying to access non-public routes
