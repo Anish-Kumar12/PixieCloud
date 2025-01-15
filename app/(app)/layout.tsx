@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 const sidebarItems = [
-  { href: "/home", icon: LayoutDashboardIcon, label: "Home Page" },
+  { href: "/start", icon: LayoutDashboardIcon, label: "Home Page" },
   { href: "/social-share", icon: Share2Icon, label: "Social Share" },
   { href: "/video-upload", icon: UploadIcon, label: "Video Upload" },
 ];
@@ -61,7 +61,7 @@ export default function AppLayout({
                 </label>
               </div>
               <div className="flex-1">
-                <Link href="/" onClick={handleLogoClick}>
+                <Link href="/start" onClick={handleLogoClick}>
                   <div className="btn btn-ghost normal-case text-2xl font-bold tracking-tight cursor-pointer">
                     Cloudinary Showcase
                   </div>
