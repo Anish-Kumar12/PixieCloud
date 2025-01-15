@@ -65,6 +65,9 @@ export async function POST(request: NextRequest) {
         uploadStream.end(buffer);
       }
     );
+    if (!result) {
+      throw new Error("Upload failed, no result returned");
+    }
     const video = await prisma.video.create({
       data: {
         title,
@@ -72,12 +75,13 @@ export async function POST(request: NextRequest) {
         publicId: result.public_id,
         originalSize: originalSize,
         compressedSize: String(result.bytes),
-        duration: result.duration || 0     },
+        duration: result.duration || 0,
+      },
     });
     return NextResponse.json(video);
   } catch (error) {
-    console.log("UPload video failed", error);
-    return NextResponse.json({ error: "UPload video failed" }, { status: 500 });
+    console.log("Upload video failed", error);
+    return NextResponse.json({ error: "Upload video failed" }, { status: 500 });
   } finally {
     await prisma.$disconnect();
   }
